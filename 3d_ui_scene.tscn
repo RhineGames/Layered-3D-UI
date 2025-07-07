@@ -1,0 +1,125 @@
+[gd_scene load_steps=15 format=3 uid="uid://432hon18u6ar"]
+
+[ext_resource type="PackedScene" uid="uid://cpfpccca8m6w5" path="res://ui_scene.tscn" id="1_2qin2"]
+[ext_resource type="Script" uid="uid://c04ksuo75ppie" path="res://3d_ui_scene.gd" id="1_5oxn0"]
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_5oxn0"]
+viewport_path = NodePath("Layer_1/SubViewport")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_vqk6v"]
+resource_local_to_scene = true
+transparency = 2
+alpha_scissor_threshold = 0.5
+alpha_antialiasing_mode = 0
+shading_mode = 0
+albedo_texture = SubResource("ViewportTexture_5oxn0")
+
+[sub_resource type="QuadMesh" id="QuadMesh_5lw5k"]
+resource_local_to_scene = true
+material = SubResource("StandardMaterial3D_vqk6v")
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_tfmwr"]
+viewport_path = NodePath("Layer_2/SubViewport")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_eoqxb"]
+resource_local_to_scene = true
+transparency = 2
+alpha_scissor_threshold = 0.5
+alpha_antialiasing_mode = 0
+shading_mode = 0
+albedo_texture = SubResource("ViewportTexture_tfmwr")
+
+[sub_resource type="QuadMesh" id="QuadMesh_0umq7"]
+resource_local_to_scene = true
+material = SubResource("StandardMaterial3D_eoqxb")
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_vqk6v"]
+viewport_path = NodePath("Layer_3/SubViewport")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_i3jfi"]
+resource_local_to_scene = true
+transparency = 2
+alpha_scissor_threshold = 0.5
+alpha_antialiasing_mode = 0
+shading_mode = 0
+albedo_texture = SubResource("ViewportTexture_vqk6v")
+
+[sub_resource type="QuadMesh" id="QuadMesh_7hdmk"]
+resource_local_to_scene = true
+material = SubResource("StandardMaterial3D_i3jfi")
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_5lw5k"]
+viewport_path = NodePath("Layer_4/SubViewport")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_tfmwr"]
+resource_local_to_scene = true
+transparency = 2
+alpha_scissor_threshold = 0.5
+alpha_antialiasing_mode = 0
+shading_mode = 0
+albedo_texture = SubResource("ViewportTexture_5lw5k")
+
+[sub_resource type="QuadMesh" id="QuadMesh_eoqxb"]
+resource_local_to_scene = true
+material = SubResource("StandardMaterial3D_tfmwr")
+
+[node name="3dUiScene" type="Node3D"]
+script = ExtResource("1_5oxn0")
+
+[node name="Layer_1" type="Node3D" parent="."]
+
+[node name="SubViewport" type="SubViewport" parent="Layer_1"]
+disable_3d = true
+transparent_bg = true
+canvas_cull_mask = 4294967281
+size = Vector2i(1152, 648)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Layer_1"]
+mesh = SubResource("QuadMesh_5lw5k")
+skeleton = NodePath("../..")
+
+[node name="Layer_2" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.0409166)
+
+[node name="SubViewport" type="SubViewport" parent="Layer_2"]
+disable_3d = true
+transparent_bg = true
+canvas_cull_mask = 4294967282
+size = Vector2i(1152, 648)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Layer_2"]
+mesh = SubResource("QuadMesh_0umq7")
+skeleton = NodePath("../..")
+
+[node name="Layer_3" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.0973062)
+
+[node name="SubViewport" type="SubViewport" parent="Layer_3"]
+disable_3d = true
+transparent_bg = true
+canvas_cull_mask = 4294967268
+size = Vector2i(1152, 648)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Layer_3"]
+mesh = SubResource("QuadMesh_7hdmk")
+skeleton = NodePath("../..")
+
+[node name="Layer_4" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.174427)
+
+[node name="SubViewport" type="SubViewport" parent="Layer_4"]
+disable_3d = true
+transparent_bg = true
+canvas_cull_mask = 4294967272
+size = Vector2i(1152, 648)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Layer_4"]
+mesh = SubResource("QuadMesh_eoqxb")
+skeleton = NodePath("../..")
+
+[node name="MainViewport" type="SubViewport" parent="."]
+disable_3d = true
+transparent_bg = true
+size = Vector2i(1152, 648)
+
+[node name="UiScene" parent="MainViewport" instance=ExtResource("1_2qin2")]
